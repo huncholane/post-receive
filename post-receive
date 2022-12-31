@@ -2,14 +2,15 @@
 
 # define the project details
 project=vflcountdown
-base='/web/$project'
+base=/web/$project
 
 while read oldrev newrev refname
 do
     branch=`echo "$refname" | sed 's:.*/::'`
-    worktree='$base/$project-$branch'
-    git --work-tree=$worktree --git-dir=$base.git checkout -f $branch
+    worktree=$base/$project-$branch
+    echo $worktree
+    mkdir -p $worktree
+    git --work-tree=$worktree --git-dir=$base checkout -f $branch
     cd $worktree
-    # project commands
-    npm run build
+    bash entrypoint.sh
 done
