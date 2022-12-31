@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# define the project details
+project=vflcountdown
+base='/web/$project'
+
+while read oldrev newrev refname
+do
+    branch=`echo "$refname" | sed 's:.*/::'`
+    worktree='$base/$project-$branch'
+    git --work-tree=$worktree --git-dir=$base.git checkout -f $branch
+    cd $worktree
+    # project commands
+    npm run build
+done
