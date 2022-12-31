@@ -2,7 +2,7 @@
 
 # define the project details
 project=vflcountdown
-base=/web/$project
+base=$HOME/$project
 
 while read oldrev newrev refname
 do
