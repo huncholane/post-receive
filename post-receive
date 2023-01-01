@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # define the project details
-project=vflcountdown
+project=PROJECT_NAME
 base=$HOME/$project
 
 while read oldrev newrev refname
